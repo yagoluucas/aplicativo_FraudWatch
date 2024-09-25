@@ -4,11 +4,19 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
+import com.example.fraud_watch.fragments.BtnCloseCadastro
 
 class PersonalInfoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.personal_info)
+
+        if (savedInstanceState == null) {
+            // Adiciona o fragmento ao container (frame layout)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, BtnCloseCadastro())
+                .commit()
+        }
     }
 }

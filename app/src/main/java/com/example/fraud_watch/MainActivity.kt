@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         val btnCriarConta = findViewById<Button>(R.id.LOGIN_BtnCriarConta_Button)
         btnCriarConta.setOnClickListener(){
             val intent = Intent(this, PersonalInfoActivity::class.java)

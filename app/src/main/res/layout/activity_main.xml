@@ -38,7 +38,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LOGIN_TextoEmail_Text"
         android:background="@drawable/border_input"
-        android:padding="15dp"/>
+        android:padding="15dp"
+        android:hint="email@examplo.com"/>
 
     <TextView
         android:id="@+id/LOGIN_TextoSenha_Text"
@@ -67,6 +68,7 @@
         android:id="@+id/LOGIN_CampoSenha_editTextText"
         android:background="@drawable/border_input"
         android:padding="15dp"
+        android:hint="Digite a sua senha"
         />
 
     <TextView
