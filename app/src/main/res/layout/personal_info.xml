@@ -126,5 +126,21 @@
         android:padding="15dp"
         android:hint="Sem ponto ou traços"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PersonalInfo_BtnAvancar_Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/primary_button_background"
+        android:text="Informar Endereço"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginBottom="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:textAlignment="textStart"
+        android:drawableEnd="@drawable/arrow"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
