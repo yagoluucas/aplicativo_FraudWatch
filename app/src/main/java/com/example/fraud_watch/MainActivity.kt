@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         btnEntrar.setOnClickListener(){
             if(campoEmail.text.toString().equals(""))campoEmail.error = "informe a sua senha"
-
             if(campoSenha.text.toString().equals(""))campoSenha.error = "informe o seu email"
         }
     }

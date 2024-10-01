@@ -8,9 +8,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Cadastro_Fechar"
-        android:layout_width="37dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="39dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/icone_fechar"
         app:layout_constraintRight_toRightOf="parent"
