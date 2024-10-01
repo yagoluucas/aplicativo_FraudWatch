@@ -2,13 +2,19 @@ package com.example.fraud_watch.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.BtnCloseCadastro
+import com.example.fraud_watch.utils.Utils
 
 class PersonalInfoActivity: AppCompatActivity() {
+
+    private final val utils : Utils = Utils()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
@@ -20,7 +26,6 @@ class PersonalInfoActivity: AppCompatActivity() {
                 .commit()
         }
 
-
         val btnInformarEndereco = findViewById<Button>(R.id.PersonalInfo_BtnAvancar_Button)
         val campoNome = findViewById<EditText>(R.id.PersonalInfo_CampoNome_EditText)
         val campoSobrenome = findViewById<EditText>(R.id.PersonalInfo_CampoSobrenome_EditText)
@@ -28,38 +33,77 @@ class PersonalInfoActivity: AppCompatActivity() {
         val campoDataNascimento = findViewById<EditText>(R.id.PersonalInfo_CampoDataNascimento_EditText)
 
         btnInformarEndereco.setOnClickListener(){
-            if(validaCampos(campoCpf, campoNome, campoSobrenome)){
+            if(validaCampos(campoCpf, campoNome, campoSobrenome,campoDataNascimento)){
                 val intent = Intent(this, AddressActivity::class.java)
                 startActivity(intent)
             }
         }
+
+        formatarCampoData(campoDataNascimento)
     }
 
-    fun validaCpf(cpf: String): Boolean{
-        val regex = "[0-9]{11}".toRegex()
-        return regex.matches(cpf)
-    }
-
-    fun validaCampoNome(texto: String): Boolean{
-        val regex = "^[A-ZÀ-Ÿa-zà-ÿ]+(?:\\s[A-ZÀ-Ÿa-zà-ÿ]+)*\$".toRegex()
-        return regex.matches(texto)
-    }
-
-    fun validaCampos(campoCpf: EditText, campoNome: EditText, campoSobrenome: EditText):Boolean{
-        if(!validaCampoNome(campoNome.text.toString())) {
+    fun validaCampos(campoCpf: EditText, campoNome: EditText, campoSobrenome: EditText, campoData: EditText):Boolean{
+        if(!utils.validaCampoNome(campoNome.text.toString())) {
             campoNome.error = "Nome inválido"
             return false
         }
 
-        if(!validaCampoNome(campoSobrenome.text.toString())) {
+        if(!utils.validaCampoNome(campoSobrenome.text.toString())) {
             campoSobrenome.error = "Sobrenome inválido"
             return false
         }
 
-        if(!validaCpf(campoCpf.text.toString()) || campoCpf.text.toString() == ""){
+        if(!utils.validaCpf(campoCpf.text.toString()) || campoCpf.text.toString() == ""){
             campoCpf.error = "cpf inválido, coloque somente números sem pontos ou traços"
+            return false
+        }
+
+        if(campoData.text.toString().length <= 9){
+            campoData.error = "Data de nascimento incorreta!"
             return false
         }
         return true
     }
+
+    fun formatarCampoData(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+            private val mascara = "##/##/####"
+            private var oldText = ""
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(editable: Editable?) {
+                if (isUpdating) {
+                    return
+                }
+
+                val text = editable.toString().replace(Regex("[^\\d]"), "") // Remove qualquer caractere não numérico
+                var formattedText = ""
+
+                var i = 0
+                for (m in mascara.toCharArray()) {
+                    if (m != '#' && text.length > oldText.length) {
+                        formattedText += m
+                        continue
+                    }
+                    try {
+                        formattedText += text[i]
+                    } catch (e: Exception) {
+                        break
+                    }
+                    i++
+                }
+
+                isUpdating = true
+                oldText = formattedText
+                editText.setText(formattedText)
+                editText.setSelection(formattedText.length) // Move o cursor para o final
+                isUpdating = false
+            }
+        })
+    }
+
 }

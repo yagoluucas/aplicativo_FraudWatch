@@ -169,7 +169,7 @@
                 app:layout_constraintTop_toBottomOf="@id/PersonalInfo_TextoDataNascimento_Text"
                 android:background="@drawable/border_input"
                 android:padding="15dp"
-                android:hint="DD/MM/AAAA"/>
+                android:hint="DD/MM/AAAA" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
