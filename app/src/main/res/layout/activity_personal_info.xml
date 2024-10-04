@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/PersonalInfo_Tela">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/PersonalInfo_ScrollView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -16,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <fragment
@@ -33,7 +34,6 @@
                 android:layout_marginHorizontal="12dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Dados pessoais"
-                android:textColor="@color/cor_principal"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -54,7 +54,6 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PersonalInfo_TextoDadosPessoais_Text"
                 android:textSize="16sp"
-                android:textColor="@color/black"
                 />
 
             <EditText
@@ -85,9 +84,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PersonalInfo_CampoNome_EditText"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                />
+                android:textSize="16sp"/>
 
             <EditText
                 android:id="@+id/PersonalInfo_CampoSobrenome_EditText"
@@ -117,9 +114,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PersonalInfo_CampoSobrenome_EditText"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/PersonalInfo_CampoCpf_EditText"
@@ -150,9 +145,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PersonalInfo_CampoCpf_EditText"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                />
+                android:textSize="16sp"/>
 
             <EditText
                 android:id="@+id/PersonalInfo_CampoDataNascimento_EditText"
@@ -160,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:inputType="date"
                 android:textSize="16sp"
@@ -175,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/PersonalInfo_BtnAvancar_Button"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/PersonalInfo_Tela"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:background="@drawable/primary_button_background"
@@ -185,9 +179,8 @@
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="10dp"
                 android:textAlignment="textStart"
-                android:drawableEnd="@drawable/arrow"/>
+                android:drawableEnd="@drawable/arrow" />
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

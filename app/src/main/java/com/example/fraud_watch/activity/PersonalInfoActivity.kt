@@ -1,12 +1,14 @@
 package com.example.fraud_watch.activity
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.BtnCloseCadastro
 import com.example.fraud_watch.utils.Utils
@@ -46,6 +48,9 @@ class PersonalInfoActivity: AppCompatActivity() {
         if(!utils.validaCampoNome(campoNome.text.toString())) {
             campoNome.error = "Nome inválido"
             return false
+        }else {
+            val drawable: Drawable? = ContextCompat.getDrawable(this, R.drawable.border_incorrect)
+            campoNome.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
         }
 
         if(!utils.validaCampoNome(campoSobrenome.text.toString())) {

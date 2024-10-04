@@ -1,6 +1,7 @@
 package com.example.fraud_watch
 
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -34,8 +35,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnEntrar.setOnClickListener(){
-            if(campoEmail.text.toString().equals(""))campoEmail.error = "informe a sua senha"
-            if(campoSenha.text.toString().equals(""))campoSenha.error = "informe o seu email"
+            val emailEstaVazio: Boolean = campoEmail.text.toString() == ""
+            val senhaEstaVazia: Boolean = campoSenha.text.toString() == ""
+            if(emailEstaVazio) campoEmail.error = "informe o seu email"
+            if(senhaEstaVazia) campoSenha.error = "informe a sua senha"
+            if(!emailEstaVazio && !senhaEstaVazia) criarAlertDialog()
         }
+    }
+
+    fun criarAlertDialog(){
+        // todo: esta funcionando, porém falta configurar
+        AlertDialog.Builder(this)
+            .setTitle("Bem vindo Yago")
+            .show()
     }
 }

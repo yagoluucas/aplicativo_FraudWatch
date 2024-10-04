@@ -1,30 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment
-        android:id="@+id/fragment_container"
-        android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="64dp">
 
-    <TextView
-        android:id="@+id/Endereco_TextoEndereco_TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Endereço"
-        android:textColor="@color/cor_principal"
-        android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/fragment_container"
+                android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:id="@+id/Endereco_TextoEndereco_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Endereço"
+                android:textColor="@color/cor_principal"
+                android:textSize="20sp"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CEP"
+                android:id="@+id/Endereco_TextoCep_TextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoEndereco_TextView"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:inputType="number"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:hint="12374390"
+                android:background="@drawable/border_input"
+                android:padding="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoCep_TextView"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
