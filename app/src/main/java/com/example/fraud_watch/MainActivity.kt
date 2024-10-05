@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fraud_watch.activity.PersonalInfoActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +48,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun criarAlertDialog(){
-        // todo: esta funcionando, porém falta configurar
-        AlertDialog.Builder(this)
+        val alertDialog: AlertDialog = AlertDialog.Builder(this)
             .setTitle("Bem vindo Yago")
+            .setMessage("Login realizado com sucesso")
+            .setIcon(getDrawable(R.drawable.check))
+            .setCancelable(false)
             .show()
+
+        // time para apagar o alert
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(5000)
+            if(alertDialog.isShowing){
+                alertDialog.dismiss()
+            }
+        }
     }
 }

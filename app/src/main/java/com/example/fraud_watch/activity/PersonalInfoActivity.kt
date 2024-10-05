@@ -34,8 +34,8 @@ class PersonalInfoActivity: AppCompatActivity() {
         val campoCpf = findViewById<EditText>(R.id.PersonalInfo_CampoCpf_EditText)
         val campoDataNascimento = findViewById<EditText>(R.id.PersonalInfo_CampoDataNascimento_EditText)
 
-        btnInformarEndereco.setOnClickListener(){
-            if(validaCampos(campoCpf, campoNome, campoSobrenome,campoDataNascimento)){
+        btnInformarEndereco.setOnClickListener{
+            if(validaCampos(campoCpf, campoNome, campoSobrenome, campoDataNascimento)){
                 val intent = Intent(this, AddressActivity::class.java)
                 startActivity(intent)
             }
@@ -48,9 +48,6 @@ class PersonalInfoActivity: AppCompatActivity() {
         if(!utils.validaCampoNome(campoNome.text.toString())) {
             campoNome.error = "Nome inválido"
             return false
-        }else {
-            val drawable: Drawable? = ContextCompat.getDrawable(this, R.drawable.border_incorrect)
-            campoNome.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
         }
 
         if(!utils.validaCampoNome(campoSobrenome.text.toString())) {
@@ -58,7 +55,7 @@ class PersonalInfoActivity: AppCompatActivity() {
             return false
         }
 
-        if(!utils.validaCpf(campoCpf.text.toString()) || campoCpf.text.toString() == ""){
+        if(!utils.validaCpf(campoCpf.text.toString())){
             campoCpf.error = "cpf inválido, coloque somente números sem pontos ou traços"
             return false
         }
@@ -110,5 +107,8 @@ class PersonalInfoActivity: AppCompatActivity() {
             }
         })
     }
+
+
+
 
 }

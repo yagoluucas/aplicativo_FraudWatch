@@ -10,8 +10,4 @@ class Utils {
         val regex = "^[A-ZÀ-Ÿa-zà-ÿ]+(?:\\s[A-ZÀ-Ÿa-zà-ÿ]+)*\$".toRegex()
         return regex.matches(texto)
     }
-
-    fun criarAlertDialog(){
-
-    }
 }
