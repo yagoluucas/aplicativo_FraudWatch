@@ -1,19 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.FinishActivityRegistration">
 
 
-    <fragment
-        android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_container"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.FinishActivityRegistration"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FinishActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <fragment
+            android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_container"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/Finish_TextoCriarAcesso_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Criar Acesso"
+            android:textColor="@color/cor_principal"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
+
+        <TextView
+            android:id="@+id/Finish_TextoEmail_TextView"
+            style="@style/textViewForm"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_TextoCriarAcesso_TextView"
+            android:text="Email"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <EditText
+            android:id="@+id/Finish_CampoEmail_EditText"
+            style="@style/editTextForm"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_TextoEmail_TextView"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:hint="email@exampe.com" />
+
+        <TextView
+            android:id="@+id/Finish_TextoTelefone_TextView"
+            android:text="Telefone"
+            style="@style/textViewForm"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_CampoEmail_EditText"/>
+
+        <EditText
+            style="@style/editTextForm"
+            android:id="@+id/Finish_CampoTelefone_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_TextoTelefone_TextView"
+            android:hint="11964893461"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:inputType="phone"/>
+
+        <TextView
+            android:id="@+id/Finish_TextoSenha_TextView"
+            android:text="Senha"
+            style="@style/textViewForm"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_CampoTelefone_EditText"/>
+
+        <EditText
+            style="@style/editTextForm"
+            android:id="@+id/Finish_CampoSenha_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_TextoSenha_TextView"
+            android:hint="no mínimo 8 caracteres"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:inputType="phone"/>
+
+        <TextView
+            android:id="@+id/Finish_TextoConfirmarSenha_TextView"
+            android:text="Confirmar a senha"
+            style="@style/textViewForm"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_CampoSenha_EditText"/>
+
+        <EditText
+            style="@style/editTextForm"
+            android:id="@+id/Finish_CampoComfirmarSenha_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_TextoConfirmarSenha_TextView"
+            android:hint="a mesma senha digitada no campo acima"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:inputType="phone"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Finish_BtnFinalizarCadastro_Button"
+            app:layout_constraintTop_toBottomOf="@+id/Finish_CampoComfirmarSenha_EditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/primary_button_background"
+            android:text="Criar Conta"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="10dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
