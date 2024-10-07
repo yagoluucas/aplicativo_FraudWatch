@@ -1,107 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fillViewport="true">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="64dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/fragment_container"
+            android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/Endereco_TextoEndereco_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Endereço"
+            android:textColor="@color/cor_principal"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
+
+        <TextView
+            android:id="@+id/Endereco_TextoCep_TextView"
+            style="@style/textViewForm"
+            android:layout_marginTop="20dp"
+            android:text="CEP"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoEndereco_TextView"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <EditText
+            android:id="@+id/Endereco_CampoCep_EditText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="number"
+            android:maxLength="9"
+            android:hint="12374390"
+            style="@style/editTextForm"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoCep_TextView" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:text="Estado"
+            style="@style/textViewForm"
+            android:id="@+id/Endereco_TextEstado_TextView"
+            android:labelFor="@+id/Endereco_DropDowEstado_AutoComplete"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoCep_EditText"/>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/Endereco_DropEstado"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextEstado_TextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-            <fragment
-                android:id="@+id/fragment_container"
-                android:name="com.example.fraud_watch.fragments.BtnCloseCadastro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_gravity="end"/>
+            <AutoCompleteTextView
+                style="@style/inputTextView"
+                android:id="@+id/Endereco_DropDowEstado_AutoComplete" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/Endereco_TextoEndereco_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Endereço"
-                android:textColor="@color/cor_principal"
-                android:textSize="20sp"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            style="@style/textViewForm"
+            android:layout_marginTop="20dp"
+            android:text="Cidade"
+            android:id="@+id/Endereco_TextCidade_TextView"
+            android:labelFor="@id/Endereco_DropDowCidade_AutoComplete"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropEstado"/>
 
-            <TextView
-                android:id="@+id/Endereco_TextoCep_TextView"
-                style="@style/textViewForm"
-                android:layout_marginTop="20dp"
-                android:text="CEP"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoEndereco_TextView" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/Endereco_DropCidade"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextCidade_TextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-            <EditText
-                android:id="@+id/Endereco_CampoCep_EditText"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:inputType="number"
-                android:layout_marginTop="5dp"
-                android:hint="12374390"
-                style="@style/editTextForm"
-                app:layout_constraintTop_toBottomOf="@+id/Endereco_TextoCep_TextView" />
+            <AutoCompleteTextView
+                style="@style/inputTextView"
+                android:id="@+id/Endereco_DropDowCidade_AutoComplete" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_marginTop="20dp"
-                android:text="Estado"
-                style="@style/textViewForm"
-                android:labelFor="@+id/Endereco_DropDowEstado_AutoComplete"/>
+        <TextView
+            style="@style/textViewForm"
+            android:text="Bairro"
+            android:id="@+id/Endereco_TextBairro_TextView"
+            android:layout_marginTop="20dp"
+            android:labelFor="@+id/Endereco_DropDowBairro_AutoComplete"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropCidade"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/Endereco_DropBairro"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextBairro_TextView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:id="@+id/Endereco_DropDowEstado_AutoComplete"
-                    android:fontFamily="@font/roboto"
-                    android:textSize="14sp"
-                    android:background="@drawable/input_custom"/>
-            </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/Endereco_DropDowBairro_AutoComplete"
+                style="@style/inputTextView"/>
 
-            <TextView
-                style="@style/textViewForm"
-                android:layout_marginTop="20dp"
-                android:text="Cidade"
-                android:labelFor="@id/Endereco_DropDowCidade_AutoComplete"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <TextView
+            android:text="Rua"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropBairro"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/textViewForm"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/Endereco_TextRua_TextView" />
 
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:id="@+id/Endereco_DropDowCidade_AutoComplete"
-                    android:fontFamily="@font/roboto"
-                    android:textSize="14sp"
-                    android:background="@drawable/input_custom"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-    </ScrollView>
+        <EditText
+            android:id="@+id/Endereco_CampoRua_EditText"
+            android:layout_width="0dp"
+            style="@style/editTextForm"
+            android:hint="Rua do exemplo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/Endereco_CampoNumero_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextRua_TextView"
+            android:maxLines="1"
+            android:inputType="text"
+            android:ellipsize="end"
+            android:scrollHorizontally="true"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/Endereco_TextNumero_TextView"
+            style="@style/textViewForm"
+            android:layout_width="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/Endereco_CampoRua_EditText"
+            android:text="Número"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropBairro" />
+
+        <EditText
+            android:id="@+id/Endereco_CampoNumero_EditText"
+            android:layout_width="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextNumero_TextView"
+            style="@style/editTextForm"
+            android:hint="1234A5"
+            android:maxLength="6" />
+
+        <TextView
+            android:id="@+id/Endereco_TextComplemento_TextView"
+            android:text="Complemento"
+            style="@style/textViewForm"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoRua_EditText"/>
+
+        <EditText
+            android:id="@+id/Endereco_CampoComplemento_EditText"
+            style="@style/editTextForm"
+            android:layout_marginBottom="15dp"
+            android:hint="Casa, apartamento..."
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_TextComplemento_TextView"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Endereco_BtnAvancar_Button"
+            android:background="@drawable/primary_button_background"
+            android:text="Finalizar cadastro"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:textAlignment="textStart"
+            android:drawableEnd="@drawable/arrow"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoComplemento_EditText"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
