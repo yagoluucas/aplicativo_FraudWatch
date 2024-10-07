@@ -1,8 +1,10 @@
 package com.example.fraud_watch.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.BtnCloseCadastro
@@ -11,6 +13,8 @@ class AddressActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address)
+
+        val btnFinalizarCadastro: Button = findViewById(R.id.Endereco_BtnAvancar_Button)
 
         if (savedInstanceState == null) {
             // Adiciona o fragmento ao container (frame layout)
@@ -59,5 +63,9 @@ class AddressActivity: AppCompatActivity() {
         // setar o nosso layout
         autoCompleteEstado.setAdapter(adapterEstado)
 
+        btnFinalizarCadastro.setOnClickListener{
+            val intent = Intent(this, FinishActivityRegistration::class.java)
+            startActivity(intent)
+        }
     }
 }
