@@ -64,19 +64,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/LOGIN_BtnEntrar_Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
+        style="@style/primaryButton"
         android:text="Entrar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="619dp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@id/LOGIN_BtnCriarConta_Button"
-        android:background="@drawable/primary_button_background"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"/>
+        android:background="@drawable/primary_button_background" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/LOGIN_BtnCriarConta_Button"

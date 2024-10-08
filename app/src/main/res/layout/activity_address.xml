@@ -173,15 +173,11 @@
             app:layout_constraintTop_toBottomOf="@+id/Endereco_TextComplemento_TextView"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/primaryButton"
             android:id="@+id/Endereco_BtnAvancar_Button"
             android:background="@drawable/primary_button_background"
             android:text="Finalizar cadastro"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto_medium"
             android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="10dp"
             android:textAlignment="textStart"
             android:drawableEnd="@drawable/arrow"
             app:layout_constraintVertical_bias="1"

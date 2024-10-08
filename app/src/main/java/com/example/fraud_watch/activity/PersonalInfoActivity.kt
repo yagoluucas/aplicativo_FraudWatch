@@ -1,17 +1,19 @@
 package com.example.fraud_watch.activity
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.BtnCloseCadastro
+import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 class PersonalInfoActivity: AppCompatActivity() {
 
@@ -36,7 +38,14 @@ class PersonalInfoActivity: AppCompatActivity() {
 
         btnInformarEndereco.setOnClickListener{
             if(validaCampos(campoCpf, campoNome, campoSobrenome, campoDataNascimento)){
+                val user: User = User(campoNome.text.toString(),
+                    campoSobrenome.text.toString(),
+                    campoCpf.text.toString(),
+                    LocalDate.parse(campoDataNascimento.text.toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                )
+
                 val intent = Intent(this, AddressActivity::class.java)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
         }
@@ -107,8 +116,6 @@ class PersonalInfoActivity: AppCompatActivity() {
             }
         })
     }
-
-
 
 
 }

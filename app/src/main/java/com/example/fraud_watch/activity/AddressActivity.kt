@@ -2,12 +2,15 @@ package com.example.fraud_watch.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.BtnCloseCadastro
+import com.example.fraud_watch.model.User
 
 class AddressActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +18,8 @@ class AddressActivity: AppCompatActivity() {
         setContentView(R.layout.activity_address)
 
         val btnFinalizarCadastro: Button = findViewById(R.id.Endereco_BtnAvancar_Button)
+        val user: User? = intent.getSerializableExtra("user") as? User
+
 
         if (savedInstanceState == null) {
             // Adiciona o fragmento ao container (frame layout)
