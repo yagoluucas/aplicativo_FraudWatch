@@ -79,7 +79,7 @@ android:fillViewport="true">
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoSenha_TextView"
             android:hint="no mínimo 8 caracteres"
             app:layout_constraintRight_toLeftOf="parent"
-            android:inputType="phone"/>
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/Finish_TextoConfirmarSenha_TextView"
@@ -94,7 +94,7 @@ android:fillViewport="true">
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoConfirmarSenha_TextView"
             android:hint="a mesma senha digitada no campo acima"
             app:layout_constraintRight_toLeftOf="parent"
-            android:inputType="phone"/>
+            android:inputType="textPassword"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Finish_BtnFinalizarCadastro_Button"
