@@ -167,6 +167,7 @@
         <EditText
             android:id="@+id/Endereco_CampoComplemento_EditText"
             style="@style/editTextForm"
+            android:maxLength="60"
             android:layout_marginBottom="15dp"
             android:hint="Casa, apartamento..."
             app:layout_constraintLeft_toLeftOf="parent"

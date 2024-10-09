@@ -46,7 +46,6 @@
             style="@style/editTextForm"
             android:ems="10"
             android:inputType="text"
-            app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/PersonalInfo_TextoNome_Text"
@@ -64,7 +63,6 @@
 
         <EditText
             android:id="@+id/PersonalInfo_CampoSobrenome_EditText"
-            android:ems="10"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -85,9 +83,8 @@
         <EditText
             android:id="@+id/PersonalInfo_CampoCpf_EditText"
             style="@style/editTextForm"
-            android:ems="10"
             android:inputType="number"
-            android:maxLength="12"
+            android:maxLength="14"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/PersonalInfo_TextoCpf_Text"
@@ -107,7 +104,6 @@
             android:id="@+id/PersonalInfo_CampoDataNascimento_EditText"
             style="@style/editTextForm"
             android:layout_marginBottom="20dp"
-            android:ems="10"
             android:inputType="date"
             android:maxLength="10"
             app:layout_constraintStart_toStartOf="parent"

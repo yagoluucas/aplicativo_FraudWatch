@@ -50,6 +50,7 @@ class PersonalInfoActivity: AppCompatActivity() {
             }
         }
 
+        formatarCampoCPF(campoCpf)
         formatarCampoData(campoDataNascimento)
     }
 
@@ -96,16 +97,16 @@ class PersonalInfoActivity: AppCompatActivity() {
 
                 var i = 0
                 for (m in mascara.toCharArray()) {
-                    if (m != '#' && text.length > oldText.length) {
+                    if (m != '#' && i < text.length) {
                         formattedText += m
-                        continue
+                    } else {
+                        try {
+                            formattedText += text[i]
+                        } catch (e: Exception) {
+                            break
+                        }
+                        i++
                     }
-                    try {
-                        formattedText += text[i]
-                    } catch (e: Exception) {
-                        break
-                    }
-                    i++
                 }
 
                 isUpdating = true
@@ -117,5 +118,46 @@ class PersonalInfoActivity: AppCompatActivity() {
         })
     }
 
+    fun formatarCampoCPF(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+            private val mascara = "###.###.###-##"
+            private var oldText = ""
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(editable: Editable?) {
+                if (isUpdating) {
+                    return
+                }
+
+                // Remove qualquer caractere que não seja número
+                val text = editable.toString().replace(Regex("[^\\d]"), "")
+                var formattedText = ""
+
+                var i = 0
+                for (m in mascara.toCharArray()) {
+                    if (m != '#' && i < text.length) {
+                        formattedText += m
+                    } else {
+                        try {
+                            formattedText += text[i]
+                        } catch (e: Exception) {
+                            break
+                        }
+                        i++
+                    }
+                }
+
+                isUpdating = true
+                oldText = formattedText
+                editText.setText(formattedText)
+                editText.setSelection(formattedText.length) // Move o cursor para o final
+                isUpdating = false
+            }
+        })
+    }
 
 }
