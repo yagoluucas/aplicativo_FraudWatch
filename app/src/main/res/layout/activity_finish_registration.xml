@@ -62,9 +62,10 @@ android:fillViewport="true">
             style="@style/editTextForm"
             android:id="@+id/Finish_CampoTelefone_EditText"
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoTelefone_TextView"
-            android:hint="11964893461"
+            android:hint="Ex: 11964893461"
+            android:maxLength="11"
             app:layout_constraintRight_toLeftOf="parent"
-            android:inputType="phone"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/Finish_TextoSenha_TextView"

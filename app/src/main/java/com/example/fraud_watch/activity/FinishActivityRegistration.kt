@@ -11,6 +11,9 @@ import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
 
 class FinishActivityRegistration: AppCompatActivity() {
+
+    val utils: Utils = Utils()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish_registration)
@@ -30,6 +33,7 @@ class FinishActivityRegistration: AppCompatActivity() {
 
         btnFinalizarCadastro.setOnClickListener{
             validaCampos(campoEmail, campoTelefone, campoSenha, campoConfirmarSenha)
+
             user?.email = campoEmail.text.toString()
             user?.senha = campoConfirmarSenha.text.toString()
             user?.telefone = campoTelefone.text.toString()
@@ -44,6 +48,24 @@ class FinishActivityRegistration: AppCompatActivity() {
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(campoEmail.text.toString()).matches()){
             campoEmail.error = "Email inválido!"
+            return false
+        }
+
+        if(campoTelefone.length() != 11){
+            campoTelefone.error = "telefone inválido"
+            return false
+        }
+
+        if(campoSenha.length() < 8){
+            campoSenha.error = "A senha deve conter no mínimo 8 caracteres"
+            return false
+        }
+
+        Log.v("senha", campoSenha.text.toString())
+        Log.v("senha 2", campoConfirmarSenha.text.toString())
+
+        if(campoSenha.text.toString() != campoConfirmarSenha.text.toString()){
+            campoConfirmarSenha.error = "Senhas não correspondem"
             return false
         }
         return true
