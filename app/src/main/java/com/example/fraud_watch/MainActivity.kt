@@ -1,10 +1,8 @@
 package com.example.fraud_watch
 
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
@@ -12,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fraud_watch.activity.PersonalInfoActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.fraud_watch.utils.Utils
 
 class MainActivity : AppCompatActivity() {
+
+    private val utils = Utils()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -43,24 +41,7 @@ class MainActivity : AppCompatActivity() {
             val senhaEstaVazia: Boolean = campoSenha.text.toString() == ""
             if(emailEstaVazio) campoEmail.error = "informe o seu email"
             if(senhaEstaVazia) campoSenha.error = "informe a sua senha"
-            if(!emailEstaVazio && !senhaEstaVazia) criarAlertDialog()
-        }
-    }
-
-    fun criarAlertDialog(){
-        val alertDialog: AlertDialog = AlertDialog.Builder(this)
-            .setTitle("Bem vindo Yago")
-            .setMessage("Login realizado com sucesso")
-            .setIcon(getDrawable(R.drawable.check))
-            .setCancelable(false)
-            .show()
-
-        // time para apagar o alert
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(5000)
-            if(alertDialog.isShowing){
-                alertDialog.dismiss()
-            }
+            if(!emailEstaVazio && !senhaEstaVazia) utils.criarAlertDialog("Sucesso", "Bem-Vindo Yago", 2000, this)
         }
     }
 }

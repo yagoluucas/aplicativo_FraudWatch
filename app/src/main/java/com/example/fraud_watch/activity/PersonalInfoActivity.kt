@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -22,13 +21,6 @@ class PersonalInfoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
-
-        if (savedInstanceState == null) {
-            // Adiciona o fragmento ao container (frame layout)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, BtnCloseCadastro())
-                .commit()
-        }
 
         val btnInformarEndereco = findViewById<Button>(R.id.PersonalInfo_BtnAvancar_Button)
         val campoNome = findViewById<EditText>(R.id.PersonalInfo_CampoNome_EditText)

@@ -18,6 +18,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
+        <FrameLayout
+            android:id="@+id/fragment_container2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
         <TextView
             android:id="@+id/Endereco_TextoEndereco_TextView"
             android:layout_width="wrap_content"
@@ -27,8 +34,9 @@
             android:text="Endereço"
             android:textColor="@color/cor_principal"
             android:textSize="20sp"
+            android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
+            app:layout_constraintTop_toBottomOf="@+id/fragment_container2"/>
 
         <TextView
             android:id="@+id/Endereco_TextoCep_TextView"
@@ -110,7 +118,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/Endereco_DropDowBairro_AutoComplete"
-                style="@style/inputTextView"/>
+                style="@style/inputTextView" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

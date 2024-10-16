@@ -24,6 +24,13 @@ android:fillViewport="true">
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
+        <FrameLayout
+            android:id="@+id/fragment_container2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
         <TextView
             android:id="@+id/Finish_TextoCriarAcesso_TextView"
             android:layout_width="wrap_content"
@@ -33,6 +40,7 @@ android:fillViewport="true">
             android:text="Criar Acesso"
             android:textColor="@color/cor_principal"
             android:textSize="20sp"
+            android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
 
@@ -62,10 +70,10 @@ android:fillViewport="true">
             style="@style/editTextForm"
             android:id="@+id/Finish_CampoTelefone_EditText"
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoTelefone_TextView"
-            android:hint="Ex: 11964893461"
-            android:maxLength="11"
+            android:hint="Ex: 11 96489-3461"
+            android:maxLength="14"
             app:layout_constraintRight_toLeftOf="parent"
-            android:inputType="number"/>
+            android:inputType="phone"/>
 
         <TextView
             android:id="@+id/Finish_TextoSenha_TextView"
@@ -78,7 +86,7 @@ android:fillViewport="true">
             style="@style/editTextForm"
             android:id="@+id/Finish_CampoSenha_EditText"
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoSenha_TextView"
-            android:hint="no mínimo 8 caracteres"
+            android:hint="Min. 8 caracteres, com letras maiúsculas, minúsculas e 1 caractere especial."
             app:layout_constraintRight_toLeftOf="parent"
             android:inputType="textPassword"/>
 
@@ -93,7 +101,7 @@ android:fillViewport="true">
             style="@style/editTextForm"
             android:id="@+id/Finish_CampoComfirmarSenha_EditText"
             app:layout_constraintTop_toBottomOf="@+id/Finish_TextoConfirmarSenha_TextView"
-            android:hint="a mesma senha digitada no campo acima"
+            android:hint="A mesma senha digitada no campo acima"
             app:layout_constraintRight_toLeftOf="parent"
             android:inputType="textPassword"/>
 

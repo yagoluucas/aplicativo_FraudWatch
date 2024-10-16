@@ -1,11 +1,14 @@
 package com.example.fraud_watch.activity
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
+import com.example.fraud_watch.fragments.ArrowReturnCadastro
 import com.example.fraud_watch.fragments.BtnCloseCadastro
 import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
@@ -18,12 +21,6 @@ class FinishActivityRegistration: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish_registration)
 
-        if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, BtnCloseCadastro())
-                .commit()
-        }
-
         val btnFinalizarCadastro: Button = findViewById(R.id.Finish_BtnFinalizarCadastro_Button)
         val user: User? = intent.getSerializableExtra("user") as? User
         val campoEmail: EditText = findViewById(R.id.Finish_CampoEmail_EditText)
@@ -31,6 +28,12 @@ class FinishActivityRegistration: AppCompatActivity() {
         val campoConfirmarSenha: EditText = findViewById(R.id.Finish_CampoComfirmarSenha_EditText)
         val campoSenha: EditText = findViewById(R.id.Finish_CampoSenha_EditText)
 
+        val fragment = ArrowReturnCadastro.newInstance("finish_activity")
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container2, fragment)
+            .commit()
+
+        formatarCampoTelefone(campoTelefone)
         btnFinalizarCadastro.setOnClickListener{
             validaCampos(campoEmail, campoTelefone, campoSenha, campoConfirmarSenha)
 
@@ -51,7 +54,7 @@ class FinishActivityRegistration: AppCompatActivity() {
             return false
         }
 
-        if(campoTelefone.length() != 11){
+        if(campoTelefone.length() != 13){
             campoTelefone.error = "telefone inválido"
             return false
         }
@@ -61,13 +64,53 @@ class FinishActivityRegistration: AppCompatActivity() {
             return false
         }
 
-        Log.v("senha", campoSenha.text.toString())
-        Log.v("senha 2", campoConfirmarSenha.text.toString())
-
         if(campoSenha.text.toString() != campoConfirmarSenha.text.toString()){
             campoConfirmarSenha.error = "Senhas não correspondem"
             return false
         }
         return true
+    }
+
+
+    fun formatarCampoTelefone(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+            private val mascara = "## #####-####"
+            private var oldText = ""
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(editable: Editable?) {
+                if (isUpdating) {
+                    return
+                }
+
+                // Remove qualquer caractere que não seja número
+                val text = editable.toString().replace(Regex("[^\\d]"), "")
+                var formattedText = ""
+
+                var i = 0
+                for (m in mascara.toCharArray()) {
+                    if (m != '#' && i < text.length) {
+                        formattedText += m
+                    } else {
+                        try {
+                            formattedText += text[i]
+                        } catch (e: Exception) {
+                            break
+                        }
+                        i++
+                    }
+                }
+
+                isUpdating = true
+                oldText = formattedText
+                editText.setText(formattedText)
+                editText.setSelection(formattedText.length) // Move o cursor para o final
+                isUpdating = false
+            }
+        })
     }
 }

@@ -46,6 +46,12 @@ class Address : Serializable {
             field = value
         }
 
+    var regiao: String
+        get() = field
+        set(value) {
+            field = value
+        }
+
     // Construtor principal com todos os atributos
     constructor(
         cep: String,
@@ -54,7 +60,8 @@ class Address : Serializable {
         bairro: String,
         rua: String,
         numero: String,
-        complemento: String = ""
+        regiao: String,
+        complemento: String
     ) {
         this.cep = cep
         this.estado = estado
@@ -62,20 +69,11 @@ class Address : Serializable {
         this.bairro = bairro
         this.rua = rua
         this.numero = numero
+        this.regiao = regiao
         this.complemento = complemento
     }
 
-    // Construtor secundário para inicializar sem complemento
-    constructor(
-        cep: String,
-        estado: String,
-        cidade: String,
-        bairro: String,
-        rua: String,
-        numero: String
-    ) : this(cep, estado, cidade, bairro, rua, numero, complemento = "")
-
     override fun toString(): String {
-        return "Address(cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', complemento='$complemento')"
+        return "Address(cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', regiao='$regiao', complemento='$complemento')"
     }
 }
