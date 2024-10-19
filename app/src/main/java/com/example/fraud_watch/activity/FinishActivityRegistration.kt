@@ -9,9 +9,17 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.ArrowReturnCadastro
-import com.example.fraud_watch.fragments.BtnCloseCadastro
 import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
+import com.google.gson.Gson
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
+import java.io.BufferedWriter
+import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.concurrent.Executors
 
 class FinishActivityRegistration: AppCompatActivity() {
 
@@ -40,7 +48,8 @@ class FinishActivityRegistration: AppCompatActivity() {
             user?.email = campoEmail.text.toString()
             user?.senha = campoConfirmarSenha.text.toString()
             user?.telefone = campoTelefone.text.toString()
-            Log.v("usuário finalizado", user.toString())
+
+            enviarInformacoesCadastro(user)
         }
     }
 
@@ -112,5 +121,61 @@ class FinishActivityRegistration: AppCompatActivity() {
                 isUpdating = false
             }
         })
+    }
+
+    fun enviarInformacoesCadastro(user: User?) {
+        if (user == null) {
+            Log.e("enviarInformacoesCadastro", "Usuário é nulo")
+            return
+        }
+
+        // Se estiver usando o emulador, substitua "localhost" por "10.0.2.2"
+        val url = URL("http://10.0.2.2:8080/usuario")
+        val executorEmSegundoPlano = Executors.newSingleThreadExecutor()
+
+        executorEmSegundoPlano.execute {
+            var conexao: HttpURLConnection? = null
+            try {
+                user.cpf = user.cpf?.replace(Regex("[.]"), "")?.replace("-", "")
+                val gson = Gson()
+                val userJson = gson.toJson(user)
+
+                // Abrir conexão
+                conexao = url.openConnection() as HttpURLConnection
+                conexao.requestMethod = "POST"
+                conexao.doOutput = true
+                conexao.setRequestProperty("Content-Type", "application/json; utf-8")
+                conexao.setRequestProperty("Accept", "application/json")
+
+                // Escrever o JSON no output stream
+                val outputStream = conexao.outputStream
+                val writer = BufferedWriter(OutputStreamWriter(outputStream, "UTF-8"))
+                writer.write(userJson)
+                writer.flush()
+                writer.close()
+                outputStream.close()
+
+                Log.v("usuário", userJson)
+
+                // Enviar a requisição e obter a resposta
+                val responseCode = conexao.responseCode
+                Log.d("enviarInformacoesCadastro", "Response Code: $responseCode")
+
+                val inputStream = if (responseCode in 200..299) {
+                    conexao.inputStream
+                } else {
+                    conexao.errorStream
+                }
+
+                val response = inputStream.bufferedReader().use { it.readText() }
+                Log.d("enviarInformacoesCadastro", "Response: $response")
+
+            } catch (e: Exception) {
+                Log.e("enviarInformacoesCadastro", "Erro ao enviar informações: ${e.message}", e)
+            } finally {
+                conexao?.disconnect()
+                executorEmSegundoPlano.shutdown()
+            }
+        }
     }
 }

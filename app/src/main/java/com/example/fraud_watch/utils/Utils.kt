@@ -7,6 +7,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class Utils {
     fun validaCpf(cpf: String): Boolean{
@@ -35,6 +39,18 @@ class Utils {
                 alertDialog.dismiss()
             }
         }
+    }
+
+    fun formatarCamposParaCadastrarUsuario(dataNascimento: String?, cpf: String?): HashMap<String, String?>{
+        val camposFormatados = HashMap<String, String?>()
+
+        val formatterInput = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
+        val formatterOutput = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.getDefault())
+        val date = LocalDate.parse(dataNascimento, formatterInput)
+
+        camposFormatados["cpf"] = cpf?.replace(Regex("[^.]"), "")?.replace("-", "")
+        camposFormatados["dataNascimento"] = date.format(formatterOutput)
+        return camposFormatados
     }
 
 }

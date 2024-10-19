@@ -28,7 +28,7 @@ class Address : Serializable {
             field = value
         }
 
-    var rua: String
+    var logradouro: String
         get() = field
         set(value) {
             field = value
@@ -67,13 +67,13 @@ class Address : Serializable {
         this.estado = estado
         this.cidade = cidade
         this.bairro = bairro
-        this.rua = rua
+        this.logradouro = rua
         this.numero = numero
         this.regiao = regiao
         this.complemento = complemento
     }
 
     override fun toString(): String {
-        return "Address(cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', regiao='$regiao', complemento='$complemento')"
+        return "Address(cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$logradouro', numero='$numero', regiao='$regiao', complemento='$complemento')"
     }
 }

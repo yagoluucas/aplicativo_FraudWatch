@@ -98,7 +98,7 @@ class AddressActivity: AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(p0?.length == 9) {
-                    object : CountDownTimer(1000, 1000){
+                    object : CountDownTimer(700, 700){
                         override fun onTick(p0: Long) {
 
                         }
@@ -127,7 +127,7 @@ class AddressActivity: AppCompatActivity() {
                 regiao,
                 campoComplemento.text.toString())
 
-            user?.address = endereco
+            user?.endereco = endereco
             val intent = Intent(this, FinishActivityRegistration::class.java)
             intent.putExtra("user", user)
             startActivity(intent)
