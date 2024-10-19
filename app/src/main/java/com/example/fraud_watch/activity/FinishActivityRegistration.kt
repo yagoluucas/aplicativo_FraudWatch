@@ -1,12 +1,15 @@
 package com.example.fraud_watch.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fraud_watch.MainActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.ArrowReturnCadastro
 import com.example.fraud_watch.model.User
@@ -15,9 +18,11 @@ import com.google.gson.Gson
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import java.io.BufferedWriter
+import java.io.InputStream
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLConnection
 import java.text.SimpleDateFormat
 import java.util.concurrent.Executors
 
@@ -137,6 +142,7 @@ class FinishActivityRegistration: AppCompatActivity() {
             var conexao: HttpURLConnection? = null
             try {
                 user.cpf = user.cpf?.replace(Regex("[.]"), "")?.replace("-", "")
+                user.telefone = user.telefone.replace(" ", "")
                 val gson = Gson()
                 val userJson = gson.toJson(user)
 
@@ -155,23 +161,37 @@ class FinishActivityRegistration: AppCompatActivity() {
                 writer.close()
                 outputStream.close()
 
-                Log.v("usuário", userJson)
-
                 // Enviar a requisição e obter a resposta
                 val responseCode = conexao.responseCode
-                Log.d("enviarInformacoesCadastro", "Response Code: $responseCode")
 
-                val inputStream = if (responseCode in 200..299) {
-                    conexao.inputStream
+                var inputStream: InputStream
+                if (responseCode in 200..299) {
+                     runOnUiThread {
+                         val intent = Intent(this, MainActivity::class.java)
+                         intent.putExtra("email", user.email)
+                         intent.putExtra("senha", user.senha)
+                         object : CountDownTimer(5000, 1000){
+                             override fun onTick(p0: Long) {
+                                 val timer = p0.toString().substring(0, 1)
+                                 utils.criarAlertDialog("Sucesso", "Você será redirecionado para a tela de login em ".plus(timer).plus(" segundos"), 5000, this@FinishActivityRegistration, R.drawable.check)
+                             }
+
+                             override fun onFinish() {
+                                 startActivity(intent)
+                             }
+
+                         }.start()
+                     }
+                    inputStream = conexao.inputStream
                 } else {
-                    conexao.errorStream
+                    inputStream = conexao.errorStream
+                    runOnUiThread {
+                        utils.criarAlertDialog("Erro", inputStream.bufferedReader().use { it.readText() }, 5000, this, R.drawable.warning_circle)
+                    }
                 }
 
-                val response = inputStream.bufferedReader().use { it.readText() }
-                Log.d("enviarInformacoesCadastro", "Response: $response")
-
             } catch (e: Exception) {
-                Log.e("enviarInformacoesCadastro", "Erro ao enviar informações: ${e.message}", e)
+                Log.e("enviarInformacoesCadastro", "Erro ao enviar informações: ${e.message}")
             } finally {
                 conexao?.disconnect()
                 executorEmSegundoPlano.shutdown()

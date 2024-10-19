@@ -2,6 +2,7 @@ package com.example.fraud_watch.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.drawable.Drawable
 import com.example.fraud_watch.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,11 +25,11 @@ class Utils {
     }
 
 
-    fun criarAlertDialog(titulo: String, mensagem: String, tempoMensagem: Long, context: Context){
+    fun criarAlertDialog(titulo: String, mensagem: String, tempoMensagem: Long, context: Context, icon: Int){
         val alertDialog: AlertDialog = AlertDialog.Builder(context)
             .setTitle(titulo)
             .setMessage(mensagem)
-            .setIcon(R.drawable.check)
+            .setIcon(icon)
             .setCancelable(false)
             .show()
 
@@ -39,18 +40,6 @@ class Utils {
                 alertDialog.dismiss()
             }
         }
-    }
-
-    fun formatarCamposParaCadastrarUsuario(dataNascimento: String?, cpf: String?): HashMap<String, String?>{
-        val camposFormatados = HashMap<String, String?>()
-
-        val formatterInput = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
-        val formatterOutput = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.getDefault())
-        val date = LocalDate.parse(dataNascimento, formatterInput)
-
-        camposFormatados["cpf"] = cpf?.replace(Regex("[^.]"), "")?.replace("-", "")
-        camposFormatados["dataNascimento"] = date.format(formatterOutput)
-        return camposFormatados
     }
 
 }

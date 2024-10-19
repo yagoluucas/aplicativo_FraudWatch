@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             val senhaEstaVazia: Boolean = campoSenha.text.toString() == ""
             if(emailEstaVazio) campoEmail.error = "informe o seu email"
             if(senhaEstaVazia) campoSenha.error = "informe a sua senha"
-            if(!emailEstaVazio && !senhaEstaVazia) utils.criarAlertDialog("Sucesso", "Bem-Vindo Yago", 2000, this)
+            if(!emailEstaVazio && !senhaEstaVazia) utils.criarAlertDialog("Sucesso", "Bem-Vindo Yago", 2000, this, R.drawable.check)
         }
     }
 }

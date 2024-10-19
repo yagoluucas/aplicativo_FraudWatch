@@ -49,46 +49,6 @@ class AddressActivity: AppCompatActivity() {
         val campoNumero: EditText = findViewById(R.id.Endereco_CampoNumero_EditText)
         val campoComplemento: EditText = findViewById(R.id.Endereco_CampoComplemento_EditText)
 
-        // cria a lista
-        val estado = listOf(
-            "Acre",
-            "Alagoas",
-            "Amapá",
-            "Amazonas",
-            "Bahia",
-            "Ceará",
-            "Distrito Federal",
-            "Espírito Santo",
-            "Goiás",
-            "Maranhão",
-            "Mato Grosso",
-            "Mato Grosso do Sul",
-            "Minas Gerais",
-            "Pará",
-            "Paraíba",
-            "Paraná",
-            "Pernambuco",
-            "Piauí",
-            "Rio de Janeiro",
-            "Rio Grande do Norte",
-            "Rio Grande do Sul",
-            "Rondônia",
-            "Roraima",
-            "Santa Catarina",
-            "São Paulo",
-            "Sergipe",
-            "Tocantins"
-        )
-
-        // seleciona o autocomplete (layout)
-        val autoCompleteEstado = findViewById<AutoCompleteTextView>(R.id.Endereco_DropDowEstado_AutoComplete)
-
-        // cria o adapter
-        val adapterEstado = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, estado)
-
-        // setar o nosso layout
-        autoCompleteEstado.setAdapter(adapterEstado)
-
         formatarCampoCEP(campoCep)
 
         campoCep.addTextChangedListener(object : TextWatcher{
@@ -98,7 +58,7 @@ class AddressActivity: AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(p0?.length == 9) {
-                    object : CountDownTimer(700, 700){
+                    object : CountDownTimer(500, 500){
                         override fun onTick(p0: Long) {
 
                         }
@@ -117,7 +77,7 @@ class AddressActivity: AppCompatActivity() {
         })
 
         btnFinalizarCadastro.setOnClickListener{
-            val endereco: Address = Address(
+            val endereco = Address(
                 campoCep.text.toString(),
                 campoEstado.text.toString(),
                 campoCidade.text.toString(),
@@ -225,7 +185,7 @@ class AddressActivity: AppCompatActivity() {
                 }
 
             }else{
-                utils.criarAlertDialog("Não encontrado", "O cep " + cep + "informado não foi localizado",5000, this)
+                utils.criarAlertDialog("Não encontrado", "O cep " + cep + "informado não foi localizado",5000, this, R.drawable.warning_circle)
             }
         }
 
