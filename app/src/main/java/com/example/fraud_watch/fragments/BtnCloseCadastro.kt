@@ -21,7 +21,7 @@ class BtnCloseCadastro: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.btn_fechar_cadastro, container, false)
+        val view = inflater.inflate(R.layout.fragment_btn_fechar_cadastro, container, false)
         btnFecharCadastrar = view.findViewById(R.id.Cadastro_Fechar)
         btnFecharCadastrar.setOnClickListener(){
             val intent = Intent(activity, MainActivity::class.java)

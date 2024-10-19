@@ -168,8 +168,6 @@ class FinishActivityRegistration: AppCompatActivity() {
                 if (responseCode in 200..299) {
                      runOnUiThread {
                          val intent = Intent(this, MainActivity::class.java)
-                         intent.putExtra("email", user.email)
-                         intent.putExtra("senha", user.senha)
                          object : CountDownTimer(5000, 1000){
                              override fun onTick(p0: Long) {
                                  val timer = p0.toString().substring(0, 1)

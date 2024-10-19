@@ -30,7 +30,7 @@ class ArrowReturnCadastro: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.btn_voltar_cadastro, container, false)
+        return inflater.inflate(R.layout.fragment_btn_voltar_cadastro, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
