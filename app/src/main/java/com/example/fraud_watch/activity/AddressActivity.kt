@@ -29,6 +29,7 @@ class AddressActivity: AppCompatActivity() {
     private val utils = Utils()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address)
 
@@ -92,6 +93,11 @@ class AddressActivity: AppCompatActivity() {
             intent.putExtra("user", user)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     fun formatarCampoCEP(editText: EditText) {

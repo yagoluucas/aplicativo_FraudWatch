@@ -12,4 +12,9 @@ class ProcedimentosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_procedimentos)
     }
+
+    override fun onResume() {
+        super.onResume()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
 }

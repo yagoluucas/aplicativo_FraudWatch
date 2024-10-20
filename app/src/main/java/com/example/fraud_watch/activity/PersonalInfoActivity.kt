@@ -46,6 +46,11 @@ class PersonalInfoActivity: AppCompatActivity() {
         formatarCampoData(campoDataNascimento)
     }
 
+    override fun onResume() {
+        super.onResume()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
     fun validaCampos(campoCpf: EditText, campoNome: EditText, campoSobrenome: EditText, campoData: EditText):Boolean{
         if(!utils.validaCampoNome(campoNome.text.toString())) {
             campoNome.error = "Nome inválido"
