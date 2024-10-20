@@ -12,6 +12,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="#F5F9FF"
-        app:menu="@menu/bottom_navigation"/>
+        app:menu="@menu/bottom_navigation"
+        app:itemBackground="@drawable/menu_item_background"
+        app:itemTextColor="@color/cor_principal"
+        app:itemIconTint="@color/cor_principal"
+        app:itemRippleColor="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

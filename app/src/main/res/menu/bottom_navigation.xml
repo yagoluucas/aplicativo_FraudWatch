@@ -3,5 +3,5 @@
     <item android:id="@+id/Bottom_Menu_Home" android:title="Home" android:icon="@drawable/icon_home"/>
     <item android:id="@+id/Bottom_Menu_Procedimentos" android:title="Procedimentos" android:icon="@drawable/icon_procedimento"/>
     <item android:id="@+id/Bottom_Menu_Perfil" android:title="Perfil" android:icon="@drawable/icon_perfil"/>
-    <item android:id="@+id/Bottom_Menu_Dicas" android:title="Dicas" android:icon="@drawable/icon_dicas"/>
+    <item android:iconTint="@android:color/transparent" android:id="@+id/Bottom_Menu_Dicas" android:title="Dicas" android:icon="@drawable/icon_dicas"/>
 </menu>
