@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.fraud_watch.activity.HomeActivity
 import com.example.fraud_watch.activity.PersonalInfoActivity
 import com.example.fraud_watch.utils.Utils
 import com.google.gson.Gson
@@ -87,10 +88,27 @@ class MainActivity : AppCompatActivity() {
 
                 var inputStream: InputStream
                 if (responseCode in 200..299) {
+
                     runOnUiThread {
-                        val intent = Intent(this, MainActivity::class.java)
-                        utils.criarAlertDialog("Sucesso", "Login efetuado com sucesso", 2000, this@MainActivity, R.drawable.check)
+                        object : CountDownTimer(2000, 1000) {
+                            override fun onTick(p0: Long) {
+                                utils.criarAlertDialog(
+                                    "Sucesso",
+                                    "Login efetuado com sucesso",
+                                    2000,
+                                    this@MainActivity,
+                                    R.drawable.check
+                                )
+                            }
+
+                            override fun onFinish() {
+                                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                                startActivity(intent)
+                            }
+
+                        }.start()
                     }
+
                     inputStream = conexao.inputStream
                 } else {
                     inputStream = conexao.errorStream
