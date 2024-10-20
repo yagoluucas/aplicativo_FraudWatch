@@ -18,7 +18,8 @@ class BtnCloseCadastro: Fragment() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_btn_fechar_cadastro, container, false)

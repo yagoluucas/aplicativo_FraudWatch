@@ -124,6 +124,5 @@ class MainActivity : AppCompatActivity() {
                 executorSegundoPlano.shutdown()
             }
         }
-        utils.criarAlertDialog("Sucesso", "Bem-Vindo Yago", 2000, this, R.drawable.check)
     }
 }
