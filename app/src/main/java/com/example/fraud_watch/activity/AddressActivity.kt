@@ -14,6 +14,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.R
 import com.example.fraud_watch.fragments.ArrowReturnCadastro
+import com.example.fraud_watch.fragments.BottomNavigationMenu
 import com.example.fraud_watch.model.Address
 import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
@@ -43,9 +44,9 @@ class AddressActivity: AppCompatActivity() {
         val btnFinalizarCadastro: Button = findViewById(R.id.Endereco_BtnAvancar_Button)
         val user: User? = intent.getSerializableExtra("user") as? User
         val campoCep: EditText = findViewById(R.id.Endereco_CampoCep_EditText)
-        val campoBairro: AutoCompleteTextView = findViewById(R.id.Endereco_DropDowBairro_AutoComplete)
-        val campoCidade: AutoCompleteTextView = findViewById(R.id.Endereco_DropDowCidade_AutoComplete)
-        val campoEstado: AutoCompleteTextView = findViewById(R.id.Endereco_DropDowEstado_AutoComplete)
+        val campoBairro: EditText = findViewById(R.id.Endereco_CampoBairro_EditText)
+        val campoCidade: EditText = findViewById(R.id.Endereco_CampoCidade_EditText)
+        val campoEstado: EditText = findViewById(R.id.Endereco_CampoEstado_EditText)
         val campoRua: EditText = findViewById(R.id.Endereco_CampoRua_EditText)
         val campoNumero: EditText = findViewById(R.id.Endereco_CampoNumero_EditText)
         val campoComplemento: EditText = findViewById(R.id.Endereco_CampoComplemento_EditText)
@@ -144,9 +145,9 @@ class AddressActivity: AppCompatActivity() {
 
     fun funcaoBuscarCep(cep: String,
                         campoRua: EditText,
-                        campoBairro: AutoCompleteTextView,
-                        campoCidade: AutoCompleteTextView,
-                        campoEstado: AutoCompleteTextView){
+                        campoBairro: EditText,
+                        campoCidade: EditText,
+                        campoEstado: EditText){
         val url = URL("https://viacep.com.br/ws/"+  cep + "/json")
 
         // execução em segundo plano

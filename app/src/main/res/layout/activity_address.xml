@@ -64,40 +64,28 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoCep_EditText"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:id="@+id/Endereco_DropEstado"
+        <EditText
+            android:id="@+id/Endereco_CampoEstado_EditText"
+            style="@style/editTextForm"
             app:layout_constraintTop_toBottomOf="@+id/Endereco_TextEstado_TextView"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-            <AutoCompleteTextView
-                style="@style/inputTextView"
-                android:id="@+id/Endereco_DropDowEstado_AutoComplete" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <TextView
             style="@style/textViewForm"
             android:layout_marginTop="20dp"
             android:text="Cidade"
             android:id="@+id/Endereco_TextCidade_TextView"
-            android:labelFor="@id/Endereco_DropDowCidade_AutoComplete"
+            android:labelFor="@+id/Endereco_CampoCidade_EditText"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropEstado"/>
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoEstado_EditText"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:id="@+id/Endereco_DropCidade"
+        <EditText
+            android:id="@+id/Endereco_CampoCidade_EditText"
+            style="@style/editTextForm"
             app:layout_constraintTop_toBottomOf="@+id/Endereco_TextCidade_TextView"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-            <AutoCompleteTextView
-                style="@style/inputTextView"
-                android:id="@+id/Endereco_DropDowCidade_AutoComplete" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
         <TextView
             style="@style/textViewForm"
@@ -106,25 +94,19 @@
             android:layout_marginTop="20dp"
             android:labelFor="@+id/Endereco_DropDowBairro_AutoComplete"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropCidade"/>
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoCidade_EditText"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:id="@+id/Endereco_DropBairro"
+        <EditText
+            android:id="@+id/Endereco_CampoBairro_EditText"
             app:layout_constraintTop_toBottomOf="@+id/Endereco_TextBairro_TextView"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-            <AutoCompleteTextView
-                android:id="@+id/Endereco_DropDowBairro_AutoComplete"
-                style="@style/inputTextView" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            style="@style/editTextForm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:hint="Seu bairro"/>
 
         <TextView
             android:text="Rua"
-            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropBairro"
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoBairro_EditText"
             app:layout_constraintLeft_toLeftOf="parent"
             style="@style/textViewForm"
             android:layout_marginTop="20dp"
@@ -153,7 +135,7 @@
             app:layout_constraintStart_toEndOf="@+id/Endereco_CampoRua_EditText"
             android:text="Número"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Endereco_DropBairro" />
+            app:layout_constraintTop_toBottomOf="@+id/Endereco_CampoBairro_EditText" />
 
         <EditText
             android:id="@+id/Endereco_CampoNumero_EditText"
