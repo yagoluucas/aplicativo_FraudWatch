@@ -1,11 +1,13 @@
 package com.example.fraud_watch.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.JsonReader
+import android.util.Log
 
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -18,6 +20,7 @@ import com.example.fraud_watch.fragments.BottomNavigationMenu
 import com.example.fraud_watch.model.Address
 import com.example.fraud_watch.model.User
 import com.example.fraud_watch.utils.Utils
+import org.json.JSONObject
 import java.io.InputStreamReader
 import java.net.URL
 import java.util.concurrent.Executors
@@ -90,9 +93,11 @@ class AddressActivity: AppCompatActivity() {
                 campoComplemento.text.toString())
 
             user?.endereco = endereco
-            val intent = Intent(this, FinishActivityRegistration::class.java)
-            intent.putExtra("user", user)
-            startActivity(intent)
+            Log.v("endereco", endereco.toString())
+
+//            val intent = Intent(this, FinishActivityRegistration::class.java)
+//            intent.putExtra("user", user)
+//            startActivity(intent)
         }
     }
 
@@ -153,51 +158,42 @@ class AddressActivity: AppCompatActivity() {
         // execução em segundo plano
 
         val executorEmSegundoPlano = Executors.newSingleThreadExecutor()
-        executorEmSegundoPlano.execute{
-            // abre a conexão com a api
-            val conexao = url.openConnection() as HttpsURLConnection
 
-            // define o tipo de método
-            conexao.requestMethod = "GET"
+        try {
+            executorEmSegundoPlano.execute{
+                // abre a conexão com a api
+                val conexao = url.openConnection() as HttpsURLConnection
 
-            if(conexao.responseCode == HttpsURLConnection.HTTP_OK){
-                val streamEntrada = conexao.inputStream
-                val leitorJson = JsonReader(InputStreamReader(streamEntrada, "UTF-8"))
-                leitorJson.beginObject()
-                if(leitorJson.hasNext()){
-                    leitorJson.nextName()
-                    leitorJson.nextString()
-                    leitorJson.nextName()
-                    val rua = leitorJson.nextString()
-                    leitorJson.nextName()
-                    leitorJson.nextString()
-                    leitorJson.nextName()
-                    leitorJson.nextString()
-                    leitorJson.nextName()
-                    val bairro = leitorJson.nextString()
-                    leitorJson.nextName()
-                    val cidade = leitorJson.nextString()
-                    leitorJson.nextName()
-                    leitorJson.nextString()
-                    leitorJson.nextName()
-                    val estado = leitorJson.nextString()
-                    leitorJson.nextName()
-                    regiao = leitorJson.nextString()
+                // define o tipo de método
+                conexao.requestMethod = "GET"
+
+                val responseBody = conexao.inputStream.bufferedReader().use { it.readText() }
+                val jsonObject = JSONObject(responseBody)
+                if(!jsonObject.has("erro")){
+                    // val responseBody = connexion.inputStream.bufferedReader().use { it.readText() }
                     runOnUiThread{
-                        campoRua.setText(rua)
-                        campoBairro.setText(bairro)
-                        campoCidade.setText(cidade)
-                        campoEstado.setText(estado)
+                        campoRua.setText(jsonObject.getString(("logradouro")))
+                        campoBairro.setText(jsonObject.getString("bairro"))
+                        campoCidade.setText(jsonObject.getString(("localidade")))
+                        campoEstado.setText(jsonObject.getString(("estado")))
+                        regiao = jsonObject.getString("regiao")
                     }
+
+                }else{
+                   runOnUiThread{
+                       utils.criarAlertDialog("Não encontrado",
+                           "O cep $cep não foi localizado",5000, this, R.drawable.warning_circle)
+                   }
                 }
-
-            }else{
-                utils.criarAlertDialog("Não encontrado", "O cep " + cep + "informado não foi localizado",5000, this, R.drawable.warning_circle)
             }
+        }catch (e: Exception) {
+            runOnUiThread {
+                utils.criarAlertDialog("Erro", "Erro ao carregar endereço", 2000, this, R.drawable.warning_circle)
+            }
+        }finally {
+            // fechando a conexão
+            executorEmSegundoPlano.shutdown()
         }
-
-        // fechando a conexão
-        executorEmSegundoPlano.shutdown()
     }
 
 }
