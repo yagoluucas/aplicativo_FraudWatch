@@ -21,13 +21,33 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_container2"
         android:id="@+id/Dicas_ScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/Dicas_TituloPrincipal_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Proteja-se das Fraudes"
+                style="@style/tituloPrincipalPagina"/>
+
+            <TextView
+                android:id="@+id/Dicas_SubtituloPrincipal_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_TituloPrincipal_TextView"
+                app:layout_constraintBottom_toTopOf="@+id/Dicas_ContainerDicas1_LinearLayout"
+                android:text="Fique atento aos detalhes dos seus procedimentos odontológicos e evite fraudes. Siga essas dicas rápidas para se proteger e garantir a transparência no que é realizado."
+                style="@style/descricaoPrincipalPagina" />
 
             <LinearLayout
                 android:background="@drawable/background_item_dicas_fraude"
@@ -37,8 +57,9 @@
                 android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/dicasFraudesConteinerTexto">
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_SubtituloPrincipal_TextView"
+                style="@style/dicasFraudesConteinerTexto"
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:id="@+id/Dicas_TituloDicasEvitarFraude1_TextView"
@@ -54,6 +75,151 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Fique atento ao que o dentista solicita ao plano de saúde. Confira se os procedimentos pedidos correspondem ao que foi explicado durante a consulta. Se tiver dúvidas sobre a necessidade de algum tratamento, entre em contato conosco para orientação e esclarecimento"
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas2_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_ContainerDicas1_LinearLayout"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude2_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Questione Pedidos de Exames Extras" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude2_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Se o dentista solicitar exames adicionais que não foram discutidos anteriormente, pergunte sobre a real necessidade. Procedimentos desnecessários são uma forma comum de fraude."
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas3_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_ContainerDicas2_LinearLayout"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude3_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Repetição de Procedimentos" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude3_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fique atento se o dentista solicitar o mesmo procedimento repetidamente, sem uma explicação clara. Isso pode ser uma tentativa de fraude ou cobrança duplicada. Verifique com o plano se o tratamento é realmente necessário e entre em contato conosco em caso de dúvida."
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas4_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_ContainerDicas3_LinearLayout"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude4_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Mantenha Seu Histórico Atualizado" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude4_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Monitore seu histórico de procedimentos regularmente para garantir que não haja registros de solicitações fraudulentas ou indevidas."
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas5_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_ContainerDicas4_LinearLayout"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude5_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Relate Irregularidades" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude5_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Se você suspeitar de qualquer tipo de fraude ou irregularidade, comunique-se imediatamente conosco"
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas6_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dicas_ContainerDicas5_LinearLayout"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude6_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Desconfie de Solicitações Exageradas" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude6_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Desconfie de solicitações excessivas ou desnecessárias. Procedimentos exagerados podem ser indícios de fraude ou tratamentos não justificáveis"
                     android:lineHeight="24sp"/>
 
             </LinearLayout>

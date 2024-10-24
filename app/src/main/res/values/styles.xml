@@ -113,6 +113,24 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <style name="tituloPrincipalPagina">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/cor_principal</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="descricaoPrincipalPagina">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:color">@android:color/darker_gray</item>
+    </style>
+
     <style name="dicasFraudesConteinerTexto">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
