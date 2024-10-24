@@ -16,6 +16,53 @@
         app:layout_constraintTop_toTopOf="parent"
         android:name="com.example.fraud_watch.fragments.TopBarApp"/>
 
+
+    <ScrollView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        android:id="@+id/Dicas_ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/background_item_dicas_fraude"
+                android:id="@+id/Dicas_ContainerDicas1_LinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/dicasFraudesConteinerTexto">
+
+                <TextView
+                    android:id="@+id/Dicas_TituloDicasEvitarFraude1_TextView"
+                    style="@style/dicasEvitarFraudeTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Verifique os Detalhes dos Procedimentos" />
+
+                <TextView
+                    style="@style/dicasEvitarFraudeDescricao"
+                    android:id="@+id/Dicas_DescricaoDicasEvitarFraude1_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fique atento ao que o dentista solicita ao plano de saúde. Confira se os procedimentos pedidos correspondem ao que foi explicado durante a consulta. Se tiver dúvidas sobre a necessidade de algum tratamento, entre em contato conosco para orientação e esclarecimento"
+                    android:lineHeight="24sp"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container2"
         android:layout_width="wrap_content"
@@ -24,17 +71,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:name="com.example.fraud_watch.fragments.BottomNavigationMenu"/>
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:text="DICAS"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_container2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
-        app:layout_constraintVertical_bias="0.453" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

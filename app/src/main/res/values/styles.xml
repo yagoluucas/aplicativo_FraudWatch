@@ -52,20 +52,71 @@
     <style name="conteinerUltimosProcedimentos">
         <item name="android:layout_marginEnd">20dp</item>
         <item name="android:background">@drawable/background_container_home</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">15dp</item>
         <item name="android:layout_width">290dp</item>
     </style>
 
     <style name="conteinerUltimosProcedimentosTitulo">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="conteinerUltimosProcedimentosDescricao">
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textColor">#525252</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <style name="containerProcedimentoRecusado">
+        <item name="android:textColor">#D3180C</item>
+        <item name="android:background">@drawable/background_procedimento_recusado</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="containerProcedimentoAceito">
+        <item name="android:textColor">#198155</item>
+        <item name="android:background">@drawable/background_procedimento_aceito</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    
+    <style name="dicasEvitarFraudeTitulo">
+        <item name="android:textSize">18sp</item>
+        <item name="android:color">@android:color/black</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:titleMarginBottom">5dp</item>
+        <item name="android:drawableEnd">@drawable/plus</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="dicasEvitarFraudeDescricao">
+        <item name="android:textSize">16sp</item>
+        <item name="android:color">@android:color/darker_gray</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="dicasFraudesConteinerTexto">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+    </style>
 </resources>

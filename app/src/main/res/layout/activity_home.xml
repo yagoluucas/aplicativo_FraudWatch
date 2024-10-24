@@ -24,12 +24,12 @@
         android:name="com.example.fraud_watch.fragments.BottomNavigationMenu"/>
 
     <ScrollView
+        android:id="@+id/Home_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:id="@+id/Home_TextoUltimosProcedimentos_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Últimas procedimentos"
+                android:text="Últimos procedimentos"
                 style="@style/homeTituloSecao"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Home_ContainerUltimosProcedimentos_ConstraintLayout"/>
@@ -98,8 +98,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Home_ContainerUltimosProcedimentos1_ConstraintLayout"
                         style="@style/conteinerUltimosProcedimentos"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/Home_ConteinerUltimosProcedimentosTitulo1_TextView"
@@ -118,6 +117,16 @@
                             android:text="Paciente está com uma cárie no siso e sente dores"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosTitulo1_TextView" />
+
+
+                        <TextView
+                            style="@style/containerProcedimentoAceito"
+                            android:id="@+id/Home_TextoResultadoDaSolicitacaoProcedimento1_TextwView"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosDescricao1_TextView"
+                            android:text="Aceito"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -144,6 +153,16 @@
                             android:text="Paciente está com uma cárie no siso e sente dores"
                             app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosTitulo2_TextView"
                             app:layout_constraintLeft_toLeftOf="parent"/>
+
+                        <TextView
+                            style="@style/containerProcedimentoRecusado"
+                            android:id="@+id/Home_TextoResultadoDaSolicitacaoProcedimento2_TextwView"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosDescricao2_TextView"
+                            android:text="Recusada"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
