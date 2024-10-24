@@ -1,6 +1,9 @@
 package com.example.fraud_watch.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -8,6 +11,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fraud_watch.MainActivity
 import com.example.fraud_watch.R
@@ -30,8 +34,8 @@ class FinishActivityRegistration: AppCompatActivity() {
 
     val utils: Utils = Utils()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish_registration)
 
@@ -41,6 +45,7 @@ class FinishActivityRegistration: AppCompatActivity() {
         val campoTelefone: EditText = findViewById(R.id.Finish_CampoTelefone_EditText)
         val campoConfirmarSenha: EditText = findViewById(R.id.Finish_CampoComfirmarSenha_EditText)
         val campoSenha: EditText = findViewById(R.id.Finish_CampoSenha_EditText)
+        val progressBarSenha: ProgressBar = findViewById(R.id.finish_progress_bar)
 
         val fragment = ArrowReturnCadastro.newInstance("finish_activity")
         supportFragmentManager.beginTransaction()
@@ -48,6 +53,8 @@ class FinishActivityRegistration: AppCompatActivity() {
             .commit()
 
         formatarCampoTelefone(campoTelefone)
+
+        // eventos
         btnFinalizarCadastro.setOnClickListener{
             validaCampos(campoEmail, campoTelefone, campoSenha, campoConfirmarSenha)
 
@@ -57,6 +64,19 @@ class FinishActivityRegistration: AppCompatActivity() {
 
             enviarInformacoesCadastro(user)
         }
+        campoSenha.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                val senha = p0.toString()
+                val porcentagemDaDificuldadeSenha = calculaADificuldadeDaSenha(senha)
+                atualizaCorDaBarraDeProgresso(porcentagemDaDificuldadeSenha, progressBarSenha)
+            }
+
+        })
+
     }
 
     override fun onResume() {
@@ -202,4 +222,31 @@ class FinishActivityRegistration: AppCompatActivity() {
             }
         }
     }
+
+    fun calculaADificuldadeDaSenha(senha: String): Int{
+        var porcentagem = 0
+
+        if (senha.length >= 8) porcentagem += 25
+        if (Regex("[0-9]").containsMatchIn(senha)) porcentagem += 25
+        if (Regex("[a-zA-Z]").containsMatchIn(senha)) porcentagem += 25
+        if (Regex("[!@#\$%^&*()]").containsMatchIn(senha)) porcentagem += 25
+
+        return porcentagem
+    }
+
+    fun atualizaCorDaBarraDeProgresso(porcentagem: Int, pbPasswordStrength: ProgressBar) {
+        pbPasswordStrength.progress = porcentagem // Atualiza a barra com a porcentagem
+
+        val color = when (porcentagem) {
+            in 0..25 -> Color.RED
+            in 26..50 -> Color.rgb(255, 165, 0)
+            in 51..75 -> Color.BLUE
+            in 76..100 -> Color.GREEN
+            else -> Color.GRAY
+        }
+
+        // Atualiza a cor da ProgressBar
+        pbPasswordStrength.progressDrawable.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+    }
+
 }

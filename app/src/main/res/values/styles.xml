@@ -41,4 +41,31 @@
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
+    <style name="homeTituloSecao">
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="conteinerUltimosProcedimentos">
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:background">@drawable/background_container_home</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_width">290dp</item>
+    </style>
+
+    <style name="conteinerUltimosProcedimentosTitulo">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="conteinerUltimosProcedimentosDescricao">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textColor">#525252</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

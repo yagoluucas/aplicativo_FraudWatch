@@ -95,9 +95,9 @@ class AddressActivity: AppCompatActivity() {
             user?.endereco = endereco
             Log.v("endereco", endereco.toString())
 
-//            val intent = Intent(this, FinishActivityRegistration::class.java)
-//            intent.putExtra("user", user)
-//            startActivity(intent)
+            val intent = Intent(this, FinishActivityRegistration::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
         }
     }
 
@@ -188,7 +188,8 @@ class AddressActivity: AppCompatActivity() {
             }
         }catch (e: Exception) {
             runOnUiThread {
-                utils.criarAlertDialog("Erro", "Erro ao carregar endereço", 2000, this, R.drawable.warning_circle)
+                utils.criarAlertDialog("Erro",
+                    "Erro ao carregar endereço", 2000, this, R.drawable.warning_circle)
             }
         }finally {
             // fechando a conexão

@@ -23,16 +23,139 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:name="com.example.fraud_watch.fragments.BottomNavigationMenu"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:text="tela home"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_container2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Home_ContainerUltimosProcedimentos_ConstraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_container_home"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:layout_marginVertical="25dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/Home_TextoUltimosProcedimentos_TextView">
+
+                <TextView
+                    android:id="@+id/Home_TextoAcessoAosProcedimentos_TextView"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="Tenha fácil acesso a todos os procedimentos solicitados."
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/primaryButton"
+                    android:layout_width="match_parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Home_TextoAcessoAosProcedimentos_TextView"
+                    android:text="Ver Todos"
+                    android:layout_marginTop="20dp"
+                    android:textAlignment="textStart"
+                    android:drawableEnd="@drawable/arrow"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/Home_TextoUltimosProcedimentos_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Últimas procedimentos"
+                style="@style/homeTituloSecao"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Home_ContainerUltimosProcedimentos_ConstraintLayout"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/Home_TextoUltimosProcedimentos_TextView"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"> <!-- Orientação horizontal para itens lado a lado -->
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Home_ContainerUltimosProcedimentos1_ConstraintLayout"
+                        style="@style/conteinerUltimosProcedimentos"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3">
+
+                        <TextView
+                            android:id="@+id/Home_ConteinerUltimosProcedimentosTitulo1_TextView"
+                            style="@style/conteinerUltimosProcedimentosTitulo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Retirada do siso"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/Home_ConteinerUltimosProcedimentosDescricao1_TextView"
+                            style="@style/conteinerUltimosProcedimentosDescricao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Paciente está com uma cárie no siso e sente dores"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosTitulo1_TextView" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Home_ContainerUltimosProcedimentos2_ConstraintLayout"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        style="@style/conteinerUltimosProcedimentos">
+
+                        <TextView
+                            android:id="@+id/Home_ConteinerUltimosProcedimentosTitulo2_TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/conteinerUltimosProcedimentosTitulo"
+                            android:text="Retirada do siso"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/Home_ConteinerUltimosProcedimentosDescricao2_TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/conteinerUltimosProcedimentosDescricao"
+                            android:text="Paciente está com uma cárie no siso e sente dores"
+                            app:layout_constraintTop_toBottomOf="@+id/Home_ConteinerUltimosProcedimentosTitulo2_TextView"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
