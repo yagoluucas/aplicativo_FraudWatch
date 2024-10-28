@@ -26,7 +26,7 @@
     <ScrollView
         android:id="@+id/Home_ScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container">
@@ -71,6 +71,8 @@
                     android:text="Ver Todos"
                     android:layout_marginTop="20dp"
                     android:textAlignment="textStart"
+                    android:textSize="16sp"
+                    android:layout_marginHorizontal="5dp"
                     android:drawableEnd="@drawable/arrow"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,6 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/Home_ContainerUltimosProcedimentos_ConstraintLayout"/>
 
             <HorizontalScrollView
+                android:id="@+id/Home_HorizontalScrollViewUltimosProcedimentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/Home_TextoUltimosProcedimentos_TextView"
@@ -170,6 +173,38 @@
 
             </HorizontalScrollView>
 
+            <TextView
+                android:id="@+id/Home_TextDicasEvitarFraudes_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Home_HorizontalScrollViewUltimosProcedimentos"
+                style="@style/homeTituloSecao"
+                android:text="Dicas para evitar fraudes"/>
+
+            <TextView
+                android:id="@+id/Home_SubtituloDicasEvitarFraudes_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Home_TextDicasEvitarFraudes_TextView"
+                style="@style/descricaoPrincipalPagina"
+                android:padding="0dp"
+                android:text="Fraudes odontológicas podem gerar prejuízos. Para se proteger, fique atento e siga essas dicas para evitar problemas e garantir a segurança nos seus procedimentos"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Home_SubtituloDicasEvitarFraudes_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/primaryButton"
+                android:layout_marginHorizontal="0dp"
+                android:textSize="16sp"
+                android:text="Ver Dicas"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/arrow"
+                android:layout_marginTop="16dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
