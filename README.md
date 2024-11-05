@@ -38,6 +38,11 @@ Dicas Antifraude: Uma seção com dicas e orientações sobre práticas antifrau
 - **app/src/main**: Contém os arquivos principais do código-fonte, incluindo activities, fragments e modelos.
 - **res**: Recursos do Android, como layouts, strings e ícones.
 
+## Link adicionais
+
+Nossa aplicação usa uma api local para realizar um CRUD. Caso queira, é possível acessar ela através do link abaixo
+https://github.com/Mauricio-Pereira/FraudWatch-Java
+
 ## Contato
 
 Se você tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato:
