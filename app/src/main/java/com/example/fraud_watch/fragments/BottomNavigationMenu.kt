@@ -25,16 +25,14 @@ class BottomNavigationMenu : Fragment() {
         val view = inflater.inflate(R.layout.bottom_navigation_bar, container, false)
         bottomNavigationMenu = view.findViewById(R.id.bottomNavigationView)
 
-        // Configure o listener do menu de navegação
+        // Configura o listener do menu de navegação
         bottomNavigationMenu.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Bottom_Menu_Home -> {
 
                     if (activity !is HomeActivity) {
-                        // Atualize o estado do item selecionado no singleton
                         NavigationStateManager.selectedItemId = R.id.Bottom_Menu_Home
 
-                        // Navegue para a HomeActivity
                         val intent = Intent(activity, HomeActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
                         startActivity(intent)
@@ -44,10 +42,10 @@ class BottomNavigationMenu : Fragment() {
 
                 R.id.Bottom_Menu_Perfil -> {
                     if (activity !is PerfilActivity) {
-                        // Atualize o estado do item selecionado no singleton
+                        // Atualiza o estado do item selecionado no singleton
                         NavigationStateManager.selectedItemId = R.id.Bottom_Menu_Perfil
 
-                        // Navegue para a PerfilActivity
+                        // Navega para a PerfilActivity
                         val intent = Intent(activity, PerfilActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
                         startActivity(intent)
@@ -87,11 +85,11 @@ class BottomNavigationMenu : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Atualize o item selecionado sempre que o fragmento se tornar visível
+        // Atualiza o item selecionado sempre que o fragmento se tornar visível
         bottomNavigationMenu.selectedItemId = NavigationStateManager.selectedItemId
     }
 
     object NavigationStateManager {
-        var selectedItemId: Int = R.id.Bottom_Menu_Home  // Defina um valor padrão
+        var selectedItemId: Int = R.id.Bottom_Menu_Home 
     }
 }
